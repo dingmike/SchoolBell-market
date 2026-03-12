@@ -53,6 +53,18 @@
     overflow: hidden; /* Keep the images inside the rounded corners */
     background-image: none !important; 
 }
+.mySlides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 这一行很重要：它会让图片像壁纸一样填满容器，不会变形 */
+    display: block;
+}
+
+.device {
+    background: #000; /* 给手机壳一个黑色底色，防止图片加载前白屏 */
+    overflow: hidden;
+    position: relative;
+}
 
         /* Nav */
         nav {
@@ -176,20 +188,19 @@
         
             <div class="device">
             <div class="slideshow-container">
-                <!-- Slide 1 -->
+                <!-- 第一张图 -->
                 <div class="mySlides fade">
-                    <img src="https://placehold.co" style="width:100%">
+                    <img src="images/screen.jpg" style="width:100%" alt="SchoolBell App Screenshot 1">
                 </div>
-                <!-- Slide 2 -->
+                <!-- 如果你有更多图，按下面格式添加，如果没有，删掉下面两行 -->
                 <div class="mySlides fade">
-                    <img src="https://placehold.co" style="width:100%">
+                    <img src="images/screen2.jpg" style="width:100%" alt="SchoolBell App Screenshot 2">
                 </div>
-                <!-- Slide 3 -->
                 <div class="mySlides fade">
-                    <img src="https://placehold.co" style="width:100%">
+                    <img src="images/screen3.jpg" style="width:100%" alt="SchoolBell App Screenshot 3">
                 </div>
             </div>
-</div>
+            </div>
         </section>
 
         <section class="grid">
