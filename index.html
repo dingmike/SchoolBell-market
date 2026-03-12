@@ -20,6 +20,34 @@
             color: var(--apple-black);
             -webkit-font-smoothing: antialiased;
         }
+
+        /* Navigation Brand Styling */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: -0.022em;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px; /* iOS App Icon rounded corner style */
+    object-fit: cover;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Adjust nav distribution to look more like Apple's site */
+nav {
+    justify-content: space-between; /* Pushes logo to left and lang to right */
+    padding: 0 15%; /* Adds breathing room on sides */
+}
+
+@media (max-width: 734px) {
+    nav { padding: 0 20px; }
+}
 /* Slideshow specific styles */
 .slideshow-container {
     width: 100%;
@@ -230,7 +258,11 @@
 <body>
 
     <nav>
-        <div style="font-weight: 600;">SchoolBell</div>
+       <div class="nav-brand">
+        <!-- 这里引用同级 images 文件夹下的 screen.jpg 作为小图标 -->
+        <img src="images/screen.jpg" alt="Logo" class="nav-icon">
+        <span>SchoolBell</span>
+    </div>
         <select id="lang-selector" onchange="changeLanguage(this.value)">
             <option value="en">English</option>
             <option value="zh-CN">简体中文</option>
@@ -288,21 +320,21 @@
         <p>© 2024 SchoolBell Dev. Built for Education.</p>
         <div style="margin-top:15px; opacity: 0.6;">
             <a href="https://dingmike.github.io/SchoolBell-Privacy/#" style="color:inherit; margin:0 10px;">Privacy</a> | 
-            <a href="mailto:mikezhagnding@gmail.com">mikezhangding@gmail.com</a>
+            <a href="mailto:mikezhagnding@gmail.com">Contact: mikezhangding@gmail.com</a>
         </div>
         <p style="margin-top: 20px; font-family: monospace;">UUID: 88-X91-SB-LOCAL</p>
     </footer>
 
     <script>
         const translations = {
-            'en': { title: "SchoolBell", subtitle: "Focus on your studies, we handle the time.", dl: "Download on App Store", f1t: "Timetable", f1d: "Intelligent schedule that syncs across your life.", f2t: "Focus Mode", f2d: "12 studio-grade bell sounds for concentration." },
-            'zh-CN': { title: "SchoolBell", subtitle: "专注于学习，时间交给我们。", dl: "在 App Store 下载", f1t: "智能课表", f1d: "自动同步校园课程，不再错过任何一节课。", f2t: "专注模式", f2d: "精选 12 种沉浸式铃声，带你进入状态。" },
-            'zh-TW': { title: "SchoolBell", subtitle: "專注於學習，時間交給我們。", dl: "在 App Store 下載", f1t: "智能課表", f1d: "自動同步校園課程，不再錯過任何一節課。", f2t: "專注模式", f2d: "精選 12 種沉浸式鈴聲，帶你進入狀態。" },
-            'ja': { title: "SchoolBell", subtitle: "勉強に集中、時間は管理します。", dl: "App Store でダウンロード", f1t: "時刻表", f1d: "時間割を自動的に同期し、予定を把握。", f2t: "集中モード", f2d: "12種類の没入型ベル音で集中力を高める。" },
-            'ko': { title: "SchoolBell", subtitle: "학업에 집중하세요, 시간은 저희가.", dl: "App Store에서 다운로드", f1t: "시간표", f1d: "학교 시간표를 자동으로 동기화합니다.", f2t: "집중 모드", f2d: "몰입을 돕는 12가지 스튜디오 급 벨 소리." },
-            'fr': { title: "SchoolBell", subtitle: "Focus sur vos études, on gère le temps.", dl: "Télécharger sur l'App Store", f1t: "Emploi du temps", f1d: "Synchronisez votre calendrier scolaire intelligemment.", f2t: "Mode Focus", f2d: "12 sons de cloche pour une concentration totale." },
-            'de': { title: "SchoolBell", subtitle: "Konzentrier dich, wir regeln die Zeit.", dl: "Im App Store laden", f1t: "Stundenplan", f1d: "Intelligenter Zeitplan, der dein Leben synchronisiert.", f2t: "Fokus-Modus", f2d: "12 erstklassige Glockenklänge für den Fokus." }
-        };
+     'en': { title: "SchoolBell", subtitle: "Focus on your studies, we handle the time.", dl: "Download on App Store", f1t: "Timetable", f1d: "Stop setting alarms one by one! Plan your day perfectly, wherever you are.", f2t: "Focus Mode", f2d: "SchoolBell helps you arrange study sessions and breaks with professional timers." },
+            'zh-CN': { title: "SchoolBell", subtitle: "专注于学习，时间交给我们。", dl: "在 App Store 下载", f1t: "智能课表", f1d: "再也不用一个接一个地设置闹钟了！无论身处何地，都能规划好你的每一天。", f2t: "专注模式", f2d: "SchoolBell 能帮助你利用专业的校时器来安排学习时段和休息时间。" },
+            'zh-TW': { title: "SchoolBell", subtitle: "專注於學習，時間交給我們。", dl: "在 App Store 下載", f1t: "智能課表", f1d: "再也不用一個接一個地設置鬧鐘了！無論身處何地，都能規劃好你的每一天。", f2t: "專注模式", f2d: "SchoolBell 能幫助你利用專業的校時器來安排學習時段和休息時間。" },
+            'ja': { title: "SchoolBell", subtitle: "勉強に集中、時間は管理します。", dl: "App Store でダウンロード", f1t: "時刻表", f1d: "アラームを一つずつ設定するのはもう終わり！どこにいても一日を完璧に計画。", f2t: "集中モード", f2d: "プロ仕様のタイマーで、勉強と休憩の時間を適切に管理します。" },
+            'ko': { title: "SchoolBell", subtitle: "학업에 집중하세요, 시간은 저희가.", dl: "App Store에서 다운로드", f1t: "시간표", f1d: "알람을 하나씩 설정할 필요가 없습니다! 어디서든 하루를 완벽하게 계획하세요.", f2t: "집중 모드", f2d: "SchoolBell의 전문 타이머로 학습 세션과 휴식 시간을 효율적으로 관리하세요." },
+            'fr': { title: "SchoolBell", subtitle: "Focus sur vos études, on gère le temps.", dl: "Télécharger sur l'App Store", f1t: "Emploi du temps", f1d: "Plus besoin de régler vos alarmes une par une ! Planifiez votre journée où que vous soyez.", f2t: "Mode Focus", f2d: "SchoolBell vous aide à organiser vos sessions d'étude et vos pauses avec des minuteurs professionnels." },
+            'de': { title: "SchoolBell", subtitle: "Konzentrier dich, wir regeln die Zeit.", dl: "Im App Store laden", f1t: "Stundenplan", f1d: "Schluss mit dem einzelnen Einstellen von Alarmen! Plane deinen Tag perfekt, egal wo du bist.", f2t: "Fokus-Modus", f2d: "SchoolBell hilft dir mit professionellen Timern, Lerneinheiten und Pausen zu organisieren." }
+         };
 
         function changeLanguage(lang) {
             const t = translations[lang] || translations['en'];
