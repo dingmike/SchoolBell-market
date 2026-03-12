@@ -60,11 +60,54 @@
     display: block;
 }
 
+/* iPhone 17 Pro Max - Ultra Thin Bezels */
 .device {
-    background: #000; /* 给手机壳一个黑色底色，防止图片加载前白屏 */
-    overflow: hidden;
     position: relative;
+    width: 320px;               /* Pro Max Width */
+    height: 680px;              /* Pro Max Aspect Ratio (approx 19.5:9) */
+    background: #000;
+    border: 8px solid #3d3d3d;  /* Titanium frame look */
+    border-radius: 54px;        /* More rounded corners */
+    box-shadow: 
+        0 50px 100px -20px rgba(0,0,0,0.3),
+        inset 0 0 2px 2px rgba(255,255,255,0.1);
+    margin: 0 auto 60px;
+    overflow: hidden;
+    outline: 1px solid rgba(255,255,255,0.05);
 }
+
+/* The Dynamic Island (灵动岛) */
+.device::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85px;
+    height: 26px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 100;
+}
+
+/* Ensure images fill the Pro Max screen */
+.slideshow-container, .mySlides, .mySlides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Optional: Subtle reflections on the screen */
+.device::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 50%);
+    pointer-events: none;
+    z-index: 10;
+}
+
 
         /* Nav */
         nav {
