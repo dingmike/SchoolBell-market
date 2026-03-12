@@ -10,78 +10,116 @@
             --apple-white: #ffffff;
             --apple-grey: #86868b;
             --apple-bg: #f5f5f7;
-            --accent-color: #0071e3;
+            --accent-blue: #0071e3;
         }
 
         body {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
             background-color: var(--apple-white);
             color: var(--apple-black);
-            line-height: 1.47;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Sticky Nav with Language Switcher */
+        /* Nav */
         nav {
-            position: fixed;
-            top: 0; width: 100%; height: 48px;
-            background: rgba(255, 255, 255, 0.8);
+            position: fixed; top: 0; width: 100%; height: 50px;
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            z-index: 9999; border-bottom: 0.5px solid rgba(0,0,0,0.1);
+            z-index: 10000; border-bottom: 0.5px solid rgba(0,0,0,0.1);
             display: flex; justify-content: space-around; align-items: center;
         }
 
-        nav .logo { font-weight: 600; font-size: 19px; letter-spacing: -0.022em; }
-
-        select#lang-selector {
-            border: none; background: transparent; font-size: 12px; color: var(--apple-grey); outline: none; cursor: pointer;
-        }
-
-        /* Hero */
+        /* Hero Container - Fixed Overlap Issues */
         .hero {
-            padding-top: 100px; text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 140px 20px 60px; /* More top padding for nav clearance */
+            text-align: center;
             background: linear-gradient(180deg, #fff 0%, #f5f5f7 100%);
         }
 
         .hero h1 {
-            font-size: clamp(40px, 8vw, 80px); font-weight: 600; letter-spacing: -0.015em; margin: 0;
+            font-size: clamp(48px, 10vw, 80px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 0 0 15px 0;
         }
 
         .hero p {
-            font-size: clamp(18px, 3vw, 28px); color: var(--apple-grey); margin: 10px 0 40px;
+            font-size: clamp(20px, 4vw, 28px);
+            color: var(--apple-grey);
+            margin: 0 0 40px 0;
+            max-width: 700px;
+        }
+
+        /* Download Button - Apple Style */
+        .btn-container {
+            margin-bottom: 60px; /* Space between button and device */
+        }
+
+        .btn {
+            background: var(--apple-black);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 19px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: #333;
         }
 
         /* Device Mockup */
         .device {
-            width: 260px; height: 530px; background: #000; border: 10px solid #333;
-            border-radius: 40px; margin: 0 auto 60px; box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-            display: flex; align-items: center; justify-content: center; color: #444; font-weight: bold;
+            width: 280px; height: 570px;
+            background: #000;
+            border: 12px solid #333;
+            border-radius: 44px;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.15);
+            display: flex; align-items: center; justify-content: center;
+            color: #555;
+            background-image: url('https://placehold.co');
+            background-size: cover;
         }
 
-        /* Grid */
+        /* Feature Grid */
         .grid {
-            max-width: 980px; margin: 60px auto; display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 0 20px;
+            max-width: 1000px; margin: 80px auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; padding: 0 24px;
         }
 
-        .card { background: var(--apple-bg); padding: 30px; border-radius: 24px; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { font-size: 22px; margin-bottom: 10px; }
-        .card p { color: var(--apple-grey); font-size: 16px; }
-
-        .btn {
-            background: var(--apple-black); color: white; padding: 14px 28px;
-            border-radius: 30px; text-decoration: none; font-weight: 500; display: inline-block;
+        .card {
+            background: var(--apple-bg); padding: 40px; border-radius: 28px;
         }
 
-        footer { padding: 50px 20px; border-top: 1px solid #d2d2d7; font-size: 12px; color: var(--apple-grey); text-align: center; }
+        .card h3 { font-size: 24px; margin-bottom: 12px; }
+        .card p { color: var(--apple-grey); font-size: 17px; line-height: 1.5; }
+
+        footer {
+            padding: 80px 20px; text-align: center; border-top: 1px solid #d2d2d7;
+            background: var(--apple-bg); color: var(--apple-grey); font-size: 13px;
+        }
+
+        select { border: none; background: transparent; color: var(--apple-grey); font-size: 13px; cursor: pointer; }
+
+        @media (max-width: 734px) {
+            .hero { padding-top: 100px; }
+            .btn-container { margin-bottom: 40px; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">SchoolBell</div>
+        <div style="font-weight: 600;">SchoolBell</div>
         <select id="lang-selector" onchange="changeLanguage(this.value)">
             <option value="en">English</option>
             <option value="zh-CN">简体中文</option>
@@ -93,66 +131,50 @@
         </select>
     </nav>
 
-    <main class="hero">
-        <h1 id="hero-title">SchoolBell</h1>
-        <p id="hero-subtitle">Focus on your studies, we handle the time.</p>
-        <a href="#" class="btn" id="dl-btn">Download on App Store</a>
-        <div class="device" id="mockup-text">SCREENSHOT_A7</div>
+    <main>
+        <section class="hero">
+            <h1 id="hero-title">SchoolBell</h1>
+            <p id="hero-subtitle">Focus on your studies, we handle the time.</p>
+            
+            <div class="btn-container">
+                <a href="#" class="btn" id="dl-btn">Download on App Store</a>
+            </div>
+
+            <div class="device">
+                <!-- App Screenshot goes here -->
+            </div>
+        </section>
+
+        <section class="grid">
+            <div class="card">
+                <h3 id="f1-title">Timetable</h3>
+                <p id="f1-desc">Stay ahead with an intelligent schedule that syncs across your life.</p>
+            </div>
+            <div class="card">
+                <h3 id="f2-title">Focus Mode</h3>
+                <p id="f2-desc">12 studio-grade bell sounds designed to help you concentrate.</p>
+            </div>
+        </section>
     </main>
 
-    <section class="grid">
-        <div class="card">
-            <h3 id="f1-title">Timetable</h3>
-            <p id="f1-desc">Automatically sync your school schedule.</p>
-        </div>
-        <div class="card">
-            <h3 id="f2-title">Focus Mode</h3>
-            <p id="f2-desc">Select from 12 immersive bell sounds.</p>
-        </div>
-    </section>
-
     <footer>
-        <p>© 2024 SchoolBell. All Rights Reserved.</p>
-        <p id="random-id">Ref: SB-STR-49292</p>
+        <p>© 2024 SchoolBell Dev. Built for Education.</p>
+        <div style="margin-top:15px; opacity: 0.6;">
+            <a href="#" style="color:inherit; margin:0 10px;">Privacy</a> | 
+            <a href="#" style="color:inherit; margin:0 10px;">Support</a>
+        </div>
+        <p style="margin-top: 20px; font-family: monospace;">UUID: 88-X91-SB-LOCAL</p>
     </footer>
 
     <script>
         const translations = {
-            'en': {
-                title: "SchoolBell", subtitle: "Focus on your studies, we handle the time.",
-                dl: "Download on App Store", f1t: "Timetable", f1d: "Sync your school schedule.",
-                f2t: "Focus Mode", f2d: "12 immersive bell sounds."
-            },
-            'zh-CN': {
-                title: "SchoolBell", subtitle: "专注于学习，时间交给我们。",
-                dl: "在 App Store 下载", f1t: "智能课表", f1d: "自动同步您的校园课程。",
-                f2t: "专注模式", f2d: "精选 12 种沉浸式铃声。"
-            },
-            'zh-TW': {
-                title: "SchoolBell", subtitle: "專注於學習，時間交給我們。",
-                dl: "在 App Store 下載", f1t: "智能課表", f1d: "自動同步您的校園課程。",
-                f2t: "專注模式", f2d: "精選 12 種沉浸式鈴聲。"
-            },
-            'ja': {
-                title: "SchoolBell", subtitle: "勉強に集中、時間は私たちが管理します。",
-                dl: "App Store でダウンロード", f1t: "時刻表", f1d: "時間割を自動的に同期します。",
-                f2t: "集中モード", f2d: "12種類の没入型ベル音。"
-            },
-            'ko': {
-                title: "SchoolBell", subtitle: "학업에 집중하세요, 시간은 저희가 관리합니다.",
-                dl: "App Store에서 다운로드", f1t: "시간표", f1d: "학교 시간표를 자동으로 동기화합니다.",
-                f2t: "집중 모드", f2d: "12가지의 몰입형 벨 소리."
-            },
-            'fr': {
-                title: "SchoolBell", subtitle: "Concentrez-vous, nous gérons le temps.",
-                dl: "Télécharger sur l'App Store", f1t: "Emploi du temps", f1d: "Synchronisez votre calendrier scolaire.",
-                f2t: "Mode Focus", f2d: "12 sons de cloche immersifs."
-            },
-            'de': {
-                title: "SchoolBell", subtitle: "Konzentrier dich, wir regeln die Zeit.",
-                dl: "Im App Store laden", f1t: "Stundenplan", f1d: "Synchronisiere deinen Schulplan.",
-                f2t: "Fokus-Modus", f2d: "12 immersive Glockenklänge."
-            }
+            'en': { title: "SchoolBell", subtitle: "Focus on your studies, we handle the time.", dl: "Download on App Store", f1t: "Timetable", f1d: "Intelligent schedule that syncs across your life.", f2t: "Focus Mode", f2d: "12 studio-grade bell sounds for concentration." },
+            'zh-CN': { title: "SchoolBell", subtitle: "专注于学习，时间交给我们。", dl: "在 App Store 下载", f1t: "智能课表", f1d: "自动同步校园课程，不再错过任何一节课。", f2t: "专注模式", f2d: "精选 12 种沉浸式铃声，带你进入状态。" },
+            'zh-TW': { title: "SchoolBell", subtitle: "專注於學習，時間交給我們。", dl: "在 App Store 下載", f1t: "智能課表", f1d: "自動同步校園課程，不再錯過任何一節課。", f2t: "專注模式", f2d: "精選 12 種沉浸式鈴聲，帶你進入狀態。" },
+            'ja': { title: "SchoolBell", subtitle: "勉強に集中、時間は管理します。", dl: "App Store でダウンロード", f1t: "時刻表", f1d: "時間割を自動的に同期し、予定を把握。", f2t: "集中モード", f2d: "12種類の没入型ベル音で集中力を高める。" },
+            'ko': { title: "SchoolBell", subtitle: "학업에 집중하세요, 시간은 저희가.", dl: "App Store에서 다운로드", f1t: "시간표", f1d: "학교 시간표를 자동으로 동기화합니다.", f2t: "집중 모드", f2d: "몰입을 돕는 12가지 스튜디오 급 벨 소리." },
+            'fr': { title: "SchoolBell", subtitle: "Focus sur vos études, on gère le temps.", dl: "Télécharger sur l'App Store", f1t: "Emploi du temps", f1d: "Synchronisez votre calendrier scolaire intelligemment.", f2t: "Mode Focus", f2d: "12 sons de cloche pour une concentration totale." },
+            'de': { title: "SchoolBell", subtitle: "Konzentrier dich, wir regeln die Zeit.", dl: "Im App Store laden", f1t: "Stundenplan", f1d: "Intelligenter Zeitplan, der dein Leben synchronisiert.", f2t: "Fokus-Modus", f2d: "12 erstklassige Glockenklänge für den Fokus." }
         };
 
         function changeLanguage(lang) {
@@ -164,16 +186,12 @@
             document.getElementById('f1-desc').innerText = t.f1d;
             document.getElementById('f2-title').innerText = t.f2t;
             document.getElementById('f2-desc').innerText = t.f2d;
-            document.documentElement.lang = lang;
         }
 
-        // Auto-detect browser language
-        const userLang = navigator.language || navigator.userLanguage;
-        const shortLang = userLang.split('-')[0];
-        const targetLang = translations[userLang] ? userLang : (translations[shortLang] ? shortLang : 'en');
-        
-        document.getElementById('lang-selector').value = targetLang;
-        changeLanguage(targetLang);
+        const userLang = navigator.language.startsWith('zh') ? (navigator.language === 'zh-CN' ? 'zh-CN' : 'zh-TW') : navigator.language.split('-')[0];
+        const initialLang = translations[userLang] ? userLang : 'en';
+        document.getElementById('lang-selector').value = initialLang;
+        changeLanguage(initialLang);
     </script>
 </body>
 </html>
