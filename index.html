@@ -20,6 +20,39 @@
             color: var(--apple-black);
             -webkit-font-smoothing: antialiased;
         }
+/* Slideshow specific styles */
+.slideshow-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.mySlides {
+    display: none;
+    height: 100%;
+}
+
+.mySlides img {
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+/* Ensure the device doesn't have a background image anymore so the slides show */
+.device {
+    overflow: hidden; /* Keep the images inside the rounded corners */
+    background-image: none !important; 
+}
 
         /* Nav */
         nav {
@@ -133,16 +166,30 @@
 
     <main>
         <section class="hero">
-            <h1 id="hero-title">SchoolBell</h1>
+            <h1 id="hero-title">SchoolBell Everywhere</h1>
             <p id="hero-subtitle">Focus on your studies, we handle the time.</p>
             
             <div class="btn-container">
                 <a href="#" class="btn" id="dl-btn">Download on App Store</a>
             </div>
 
+        
             <div class="device">
-                <!-- App Screenshot goes here -->
+            <div class="slideshow-container">
+                <!-- Slide 1 -->
+                <div class="mySlides fade">
+                    <img src="https://placehold.co" style="width:100%">
+                </div>
+                <!-- Slide 2 -->
+                <div class="mySlides fade">
+                    <img src="https://placehold.co" style="width:100%">
+                </div>
+                <!-- Slide 3 -->
+                <div class="mySlides fade">
+                    <img src="https://placehold.co" style="width:100%">
+                </div>
             </div>
+</div>
         </section>
 
         <section class="grid">
@@ -192,6 +239,21 @@
         const initialLang = translations[userLang] ? userLang : 'en';
         document.getElementById('lang-selector').value = initialLang;
         changeLanguage(initialLang);
+        let slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
     </script>
 </body>
 </html>
