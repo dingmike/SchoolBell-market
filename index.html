@@ -47,6 +47,29 @@
     from {opacity: .4} 
     to {opacity: 1}
 }
+/* Special container for the logo slide */
+.logo-slide {
+    display: none; /* Controlled by JS */
+    height: 100%;
+    background: #ffffff; /* Or any color that matches your logo background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Make the logo small and centered */
+.logo-slide img {
+    width: 60% !important;  /* Adjust this % to make logo bigger/smaller */
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 20%; /* Optional: gives logo an 'app icon' look */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Optional: subtle depth */
+}
+
+/* Override the JS "display: block" for the logo slide to keep Flexbox working */
+.logo-slide[style*="display: block"] {
+    display: flex !important;
+}
 
 /* Ensure the device doesn't have a background image anymore so the slides show */
 .device {
@@ -232,7 +255,7 @@
             <div class="device">
             <div class="slideshow-container">
                 <!-- 第一张图 -->
-                 <div class="mySlides fade">
+                 <div class="mySlides fade logo-slide">
                     <img src="http://bkcdn.fecstec.com/Fmqb8SrWoLfbrwFSOnMEEvf1G38H" style="width:100%" alt="SchoolBell App Screenshot 1">
                 </div>
                 <div class="mySlides fade">
